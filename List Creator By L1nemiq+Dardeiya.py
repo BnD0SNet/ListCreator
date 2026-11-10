@@ -14,7 +14,7 @@ current_log = ""
 data_list = []
 subscription = 0  # 0 - Basic subscription, 1 - Pro+ subscription
 
-print("Welcome to the list creation program!")
+print("Welcome to the list creation program!!")
 
 def Subscribe():
     global n
