@@ -12,16 +12,16 @@ n = 0
 i = 0
 current_log = ""
 data_list = []
-podpiska = 0 # 0 - Подписка базовая, 1 - Подписка Про +
+subscription = 0  # 0 - Basic subscription, 1 - Pro+ subscription
 
-print("Добро пожаловать в программу для создания списка!")
+print("Welcome to the list creation program!")
 
 def Subscribe():
     global n
     global data_list
     global i
     while i < n:
-        user_string = input(f"Введите элемент #{i + 1}, который хотите добавить: ")
+        user_string = input(f"Enter item #{i + 1} that you want to add: ")
         
         if user_string.strip() != "":
             if user_string == "/stop":
@@ -30,27 +30,27 @@ def Subscribe():
                 data_list.append(user_string)
                 i += 1
         else:
-            print("\nОшибка: Элемент не может быть пустым! Попробуйте снова.")
-        print("\nВы так же можете остановить процесс и вывести список сразу! Команда - /stop")
+            print("\nError: Item cannot be empty! Please try again.")
+        print("\nYou can also stop the process and display the list immediately! Command: /stop")
 
-    print("\nВы создали список! \n")
+    print("\nYou have created a list!\n")
     print(data_list)
 
 def DefaultSubscribe():
     global n
     while n == 0:
         try:
-            n = int(input("Введите количество строк: "))
+            n = int(input("Enter the number of items: "))
             if n > 10:
-                print("\nЗапрет! Вы не можете ввести строк больше чем 10!")
-                print("Приобретите подписку Про+\n")
+                print("\nAccess denied! You cannot enter more than 10 items!")
+                print("Please purchase the Pro+ subscription.\n")
                 n = 0
         except ValueError:
-           print("Текст и специальные символы запрещены! Введите корректное число.")
+            print("Text and special characters are not allowed! Please enter a valid number.")
     Subscribe()
-    print("\nДля того чтоб сделать список больше \nприобретите подписку у разработчика этого мини-проекта @L1nemiq \n")
+    print("\nTo create a larger list, \npurchase a subscription from the developer of this mini-project @L1nemiq\n")
     if data_list == []:
-        print("\nСписок пуст! Создайте ещё раз, запустив программу заново.")
+        print("\nThe list is empty! Create a new one by running the program again.")
     else:
         pass
 
@@ -58,13 +58,13 @@ def ProSubscribe():
     global n
     while n == 0:
         try:
-            n = int(input("Введите количество строк: "))
+            n = int(input("Enter the number of items: "))
         except ValueError:
-           print("Текст и специальные символы запрещены! Введите корректное число.")
+            print("Text and special characters are not allowed! Please enter a valid number.")
     Subscribe()
-    print("\nПодписка обнаружена! \nСпасибо за использование программы, и поддержку в нашу сторону!\n")
+    print("\nSubscription detected! \nThank you for using the program and for your support!\n")
     if data_list == []:
-        print("\nСписок пуст! Создайте ещё раз, запустив программу заново.")
+        print("\nThe list is empty! Create a new one by running the program again.")
     else:
         pass
 
@@ -79,7 +79,7 @@ def DardeiyaSubscribe():
         chat_history.config(state=tk.NORMAL)
         chat_history.delete("1.0", tk.END)
         chat_history.insert(tk.END, current_log)
-        chat_history.insert(tk.END, f"Введите элемент #{i + 1}, который хотите добавить: {input_tracker.get()}")
+        chat_history.insert(tk.END, f"Enter item #{i + 1} that you want to add: {input_tracker.get()}")
         chat_history.see(tk.END)
         chat_history.config(state=tk.DISABLED)
 
@@ -98,7 +98,7 @@ def DardeiyaSubscribe():
             OnType()
         else:
             data_list.append(command)
-            current_log += f"Введите элемент #{i + 1}, который хотите добавить: {command}\n"
+            current_log += f"Enter item #{i + 1} that you want to add: {command}\n"
             i += 1
             OnType()
 
@@ -110,7 +110,7 @@ def DardeiyaSubscribe():
 
     def SendList():
         if data_list == []:
-            messagebox.showinfo("Список", "Список пуст!")
+            messagebox.showinfo("List", "The list is empty!")
         else:
             formatted_lines = []
             for num, item in enumerate(data_list, start=1):
@@ -124,7 +124,7 @@ def DardeiyaSubscribe():
             with open(file_name, "w", encoding="utf-8") as file:
                 file.write(final_text)
                 
-            messagebox.showinfo("Список", f"Сохранено в {file_name}\n\n{final_text}")
+            messagebox.showinfo("List", f"Saved to {file_name}\n\n{final_text}")
 
 
 
@@ -140,14 +140,14 @@ def DardeiyaSubscribe():
     user_input.focus()
     user_input.pack(pady=15)
 
-    commands_info = tk.Label(window, text="КОМАНДЫ:\n\n/clear — Очистить\n/stop — Выйти", bg="#2A3A35", fg="#B6DDBE", font=("Arial", 10, "bold"),justify=tk.LEFT)
+    commands_info = tk.Label(window, text="COMMANDS:\n\n/clear — Clear\n/stop — Exit", bg="#2A3A35", fg="#B6DDBE", font=("Arial", 10, "bold"), justify=tk.LEFT)
     commands_info.place(x=20, y=250) 
 
     send_button = tk.Button(window, text="➤", command=SendMessage)
     send_button.config(bg="#3B6B55", fg="#B6DDBE", font=("Arial", 10, "bold"), width=10)
     send_button.pack(pady=10)
 
-    end_button = tk.Button(window, text="< Показать и сохранить список >", command=SendList)
+    end_button = tk.Button(window, text="< Show and Save List >", command=SendList)
     end_button.config(bg="#4A76A8", fg="#B6DDBE", font=("Arial", 10, "bold"), width=50)
     end_button.pack(pady=15)
 
@@ -155,14 +155,14 @@ def DardeiyaSubscribe():
     window.bind('<Return>', SendMessage)
     window.mainloop()
 
-if os.path.exists(sys_key) or podpiska == "Dardeiya":
+if os.path.exists(sys_key) or subscription == "Dardeiya":
     DardeiyaSubscribe()
-elif podpiska == 0:
-    print("Подписка: Базовая, до 10 строк в список\n")
+elif subscription == 0:
+    print("Subscription: Basic, up to 10 items per list\n")
     DefaultSubscribe()
-elif podpiska == 1:
-    print("Подписка: Про +, безлимитно строк в список\n")
+elif subscription == 1:
+    print("Subscription: Pro+, unlimited items per list\n")
     ProSubscribe()
 else:
-    print("Неизвестная подпись программы.")
-    messagebox.showerror("Ошибка", "Неизвестная подпись программы.")
+    print("Unknown program signature.")
+    messagebox.showerror("Error", "Unknown program signature.")
