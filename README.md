@@ -1,18 +1,18 @@
 # ListCreator
-List Creator By L1nemiq+Dardeiya, решил обновить код друга
+List Creator by L1nemiq & Dardeiya — decided to upgrade and improve a friend's code.
 
-## В чём особенности
-- Позволяет создавать .txt списки.
-- GUI на Tkinter, а также терминальная версия
-- Удобен для быстрых списков и ведения логов
-- Удобная справка для команд
+## Features
+- Allows creating `.txt` lists
+- Includes both a Tkinter GUI and a terminal version
+- Convenient for quick lists and logging
+- Built-in command reference
 
-## Запуск
-
-Запустить(С Правами Администратора):
-
+## Getting Started
+Run the script (with Administrator privileges):
+```bash
 python "List Creator By L1nemiq+Dardeiya.py"
+```
 
-## Команды
-- /stop - полностью остановить программу, вплоть до командной строки
-- /clear - очищает временный список, а также историю списка
+## Commands
+- `/stop` — completely terminate the program, including the command prompt
+- `/clear` — clear the temporary list and list history
